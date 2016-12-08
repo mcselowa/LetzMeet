@@ -10,7 +10,7 @@ namespace LetzMitWebServer
     public class Class1
     {
         #region Login & SignUp
-        public string connect = "server=bizspa.co.za;uid=letzmeet;" + "pwd=letzmeet!;database=letzmeet";
+        public string connect = "server=domain.co.za;uid=username;" + "pwd=password!;database=database";
     public string login(string password, string userId)
     {
         MySqlConnection conn;
