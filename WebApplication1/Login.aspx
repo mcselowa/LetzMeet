@@ -17,7 +17,19 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	</head>
 	<body>
+        <div id="header">
 
+					<!-- Logo -->
+						<h1><a href="index.aspx" id="logo">LetzMeet</a></h1><em>Daily Dose of Business Studies</em>
+
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li class="current" style="white-space: nowrap;"><a href="index.aspx">Home</a></li>
+								</ul>
+						</nav>
+
+				</div>
         <form id="Login" runat="server">
 		<div id="page-wrapper">
 
@@ -25,116 +37,76 @@
             <asp:Panel ID="popup" runat="server" ScrollBars="Auto" Width="100%" Height="395px" Visible="False">
             <asp:TextBox ID="PopMessage" runat="server"></asp:TextBox>
         </asp:Panel>
-				<div id="header">
-
-					<!-- Logo -->
-						<h1><a href="index.html" id="logo">Arcana <em>by HTML5 UP</em></a></h1>
-
-					<!-- Nav -->
-						<nav id="nav">
-							<ul>
-								<li><a href="index.html">Home</a></li>
-								<li>
-									<a href="#">Dropdown</a>
-									<ul>
-										<li><a href="#">Lorem dolor</a></li>
-										<li><a href="#">Magna phasellus</a></li>
-										<li><a href="#">Etiam sed tempus</a></li>
-										<li>
-											<a href="#">Submenu</a>
-											<ul>
-												<li><a href="#">Lorem dolor</a></li>
-												<li><a href="#">Phasellus magna</a></li>
-												<li><a href="#">Magna phasellus</a></li>
-												<li><a href="#">Etiam nisl</a></li>
-												<li><a href="#">Veroeros feugiat</a></li>
-											</ul>
-										</li>
-										<li><a href="#">Veroeros feugiat</a></li>
-									</ul>
-								</li>
-								<li><a href="left-sidebar.html">Left Sidebar</a></li>
-								<li><a href="right-sidebar.html">Right Sidebar</a></li>
-								<li><a href="two-sidebar.html">Two Sidebar</a></li>
-								<li class="current"><a href="no-sidebar.html">No Sidebar</a></li>
-							</ul>
-						</nav>
-
-				</div>
+				
 
 			<!-- Main -->
-				<section class="wrapper style1">
-					<div class="container">
-						<div id="content">
+				<div class="container">
+							<section class="6u 12u(narrower)">
+								<h3>Login or Sign Up</h3>
+								
+									<div class="row 50%">
 
-							<!-- Content -->
+                                        <div class="6u 12u(mobilep)">
+											<asp:TextBox ID="UserName" runat="server" placeholder="Name" TextMode="SingleLine" Visible="False"></asp:TextBox>
+										</div>
+                                        <div class="6u 12u(mobilep)">
+											<asp:TextBox ID="SURNAME" runat="server" placeholder="Surname" TextMode="SingleLine" Visible="False"></asp:TextBox>
+										</div>
+										<div class="6u 12u(mobilep)">
+											<asp:TextBox ID="usernameTxt" runat="server" placeholder="email" TextMode="Email"></asp:TextBox>
+										</div>
+                                        <div class="6u 12u(mobilep)">
+											<asp:TextBox ID="emailverify" runat="server" placeholder="verify email" TextMode="Email" Visible="False"></asp:TextBox>
+										</div>
+                                        <div class="6u 12u(mobilep)">
+											<asp:TextBox ID="number" runat="server" placeholder="Contact Number" TextMode="SingleLine" Visible="False"></asp:TextBox>
+										</div>
+                                        <div class="6u 12u(mobilep)">
+											<asp:TextBox ID="address" runat="server" placeholder="Address" TextMode="SingleLine" Visible="False"></asp:TextBox>
+										</div>
+                                        <div class="6u 12u(mobilep)">
+											<asp:TextBox ID="province" runat="server" placeholder="Province" TextMode="SingleLine" Visible="False"></asp:TextBox>
+										</div>
+                                        <div class="6u 12u(mobilep)">
+											<asp:TextBox ID="city" runat="server" placeholder="City" TextMode="SingleLine" Visible="False"></asp:TextBox>
+										</div>
+                                        <div class="6u 12u(mobilep)">
+											<asp:TextBox ID="postcode" runat="server" placeholder="Postal Code" TextMode="SingleLine" Visible="False"></asp:TextBox>
+										</div>
+										<div class="6u 12u(mobilep)">
+                                            <asp:TextBox ID="passwordTxt" runat="server" placeholder="password" TextMode="Password" MaxLength="20"></asp:TextBox>
+										</div>
+                                        <div class="6u 12u(mobilep)">
+                                            <asp:TextBox ID="passwordverify" runat="server" placeholder="verify password" TextMode="Password" Visible="False" MaxLength="20"></asp:TextBox>
+										</div>
+                                        <!--<div class="6u 12u(mobilep)">
+                                            <asp:Calendar ID="DOB" runat="server" Visible="False" VisibleDate="2017/01/01" SelectedDate="200/01/01" Caption="DOB"></asp:Calendar>
+										</div>-->
+									</div>
+									<div class="row 50%">
+                                        
+									</div>
+									<div class="row 50%">
+										<div class="12u">
+											<ul class="actions">
+												<asp:Button ID="Btnlogin" runat="server"  Text="Login" OnClick="Btnlogin_Click" />
+                                                <asp:Button ID="Signup" runat="server"  Text="Sign Up" OnClick="Signup_Click"  />
+                                                <asp:Button ID="SignupComplete" runat="server"  Text="Sign Up" OnClick="SignupComplete_Click" Visible="False"  />
+                                                <asp:Button ID="UpdateUser" runat="server"  Text="Update" Visible="False"  />
+											</ul>
 
-								<article>
-									<header>
-										<h2>No Sidebar</h2>
-										<p>All content, all the time.</p>
-									</header>
-
-									<span class="image featured"><img src="images/banner.jpg" alt="" /></span>
-
-									<p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
-									Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
-									Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis nisi
-									consequat etiam lorem ipsum dolor sit amet nullam.</p>
-
-									<h3>And Yet Another Subheading</h3>
-									<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas ac quam risus, at tempus
-									justo. Sed dictum rutrum massa eu volutpat. Quisque vitae hendrerit sem. Pellentesque lorem felis,
-									ultricies a bibendum id, bibendum sit amet nisl. Mauris et lorem quam. Maecenas rutrum imperdiet
-									vulputate. Nulla quis nibh ipsum, sed egestas justo. Morbi ut ante mattis orci convallis tempor.
-									Etiam a lacus a lacus pharetra porttitor quis accumsan odio. Sed vel euismod nisi. Etiam convallis
-									rhoncus dui quis euismod. Maecenas lorem tellus, congue et condimentum ac, ullamcorper non sapien.
-									Donec sagittis massa et leo semper a scelerisque metus faucibus. Morbi congue mattis mi.
-									Phasellus sed nisl vitae risus tristique volutpat. Cras rutrum commodo luctus.</p>
-
-									<p>Phasellus odio risus, faucibus et viverra vitae, eleifend ac purus. Praesent mattis, enim
-									quis hendrerit porttitor, sapien tortor viverra magna, sit amet rhoncus nisl lacus nec arcu.
-									Suspendisse laoreet metus ut metus imperdiet interdum aliquam justo tincidunt. Mauris dolor urna,
-									fringilla vel malesuada ac, dignissim eu mi. Praesent mollis massa ac nulla pretium pretium.
-									Maecenas tortor mauris, consectetur pellentesque dapibus eget, tincidunt vitae arcu.
-									Vestibulum purus augue, tincidunt sit amet iaculis id, porta eu purus.</p>
-								</article>
-
-						</div>
+										</div>
+									</div>
+								
+							</section>
 					</div>
-				</section>
 
 			<!-- Footer -->
 				<div id="footer">
 					<div class="container">
-						<div class="row">
-							<section class="3u 6u(narrower) 12u$(mobilep)">
-								<h3>Links to Stuff</h3>
-								<ul class="links">
-									<li><a href="#">Mattis et quis rutrum</a></li>
-									<li><a href="#">Suspendisse amet varius</a></li>
-									<li><a href="#">Sed et dapibus quis</a></li>
-									<li><a href="#">Rutrum accumsan dolor</a></li>
-									<li><a href="#">Mattis rutrum accumsan</a></li>
-									<li><a href="#">Suspendisse varius nibh</a></li>
-									<li><a href="#">Sed et dapibus mattis</a></li>
-								</ul>
-							</section>
-							<section class="3u 6u$(narrower) 12u$(mobilep)">
-								<h3>More Links to Stuff</h3>
-								<ul class="links">
-									<li><a href="#">Duis neque nisi dapibus</a></li>
-									<li><a href="#">Sed et dapibus quis</a></li>
-									<li><a href="#">Rutrum accumsan sed</a></li>
-									<li><a href="#">Mattis et sed accumsan</a></li>
-									<li><a href="#">Duis neque nisi sed</a></li>
-									<li><a href="#">Sed et dapibus quis</a></li>
-									<li><a href="#">Rutrum amet varius</a></li>
-								</ul>
-							</section>
 							<section class="6u 12u(narrower)">
 								<h3>Get In Touch</h3>
-								<form>
+								
 									<div class="row 50%">
 										<div class="6u 12u(mobilep)">
 											<asp:TextBox ID="name" runat="server" placeholder="Name"></asp:TextBox>
@@ -156,9 +128,8 @@
 											</ul>
 										</div>
 									</div>
-								</form>
+								
 							</section>
-						</div>
 					</div>
 
 					<!-- Icons -->

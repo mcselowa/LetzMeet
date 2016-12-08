@@ -17,17 +17,18 @@ namespace WebApplication1
             {
                 if (Request.QueryString.ToString().Contains("message"))
                 {
-                    Sendmessage(Request.QueryString["name"],Request.QueryString["email"],Request.QueryString["message"]);
-                } else 
+                    Sendmessage(Request.QueryString["name"], Request.QueryString["email"], Request.QueryString["message"]);
+                }
+                else
                         if (Request.QueryString.ToString().Contains("login_name"))
-                         {
-                    return;
-                         }
+                {
+                    login();
+                }
                 else
                         if (Request.QueryString.ToString().Contains("register_name"))
-                         {
-                    return;
-                         }
+                {
+                    register();
+                }
             }
             // else { Response.Redirect("index.aspx"); }
         }
@@ -59,7 +60,7 @@ namespace WebApplication1
             PopMessage.Text = "Thank You, Your Message Has Been Submitted";
             popup.Visible = true;
         }
-        public void  Sendmessage(string Name, string email, string message )
+        public void Sendmessage(string Name, string email, string message)
         {
             MailMessage mail = new MailMessage("confidence@bizspa.co.za", email);//NB: Change to new email for letzmeet and create auto response
             mail.ReplyToList.Add(email);
@@ -75,8 +76,53 @@ namespace WebApplication1
 
             Response.Write("Thank You, Your Message Has Been Submitted");
 
-           // PopMessage.Text = "Thank You, Your Message Has Been Submitted";
+            // PopMessage.Text = "Thank You, Your Message Has Been Submitted";
             //popup.Visible = true;
         }
+        public void login()
+        {
+            
+        }
+        public void login(string email, string password)
+        {
+
+        }
+        public void register()
+        {
+
+        }
+        public void register(string name, string surname, string email, string number, string address, string province, string city, string postcode)
+        {
+
+        }
+
+        protected void Btnlogin_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void Signup_Click(object sender, EventArgs e)
+        {
+            Signup.Visible = false;
+            Btnlogin.Visible = false;
+            SignupComplete.Visible = true;
+            UserName.Visible = true;
+            SURNAME.Visible = true;
+            emailverify.Visible = true;
+            number.Visible = true;
+            address.Visible = true;
+            province.Visible = true;
+            city.Visible = true;
+            postcode.Visible = true;
+            passwordverify.Visible = true;
+            DOB.Visible = true;
+           
+        }
+
+        protected void SignupComplete_Click(object sender, EventArgs e)
+        {
+
+        }
     }
+
 }

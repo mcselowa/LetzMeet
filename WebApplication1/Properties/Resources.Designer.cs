@@ -59,5 +59,14 @@ namespace WebApplication1.Properties {
                 resourceCulture = value;
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to .
+        /// </summary>
+        internal static string userID {
+            get {
+                return ResourceManager.GetString("userID", resourceCulture);
+            }
+        }
     }
 }
