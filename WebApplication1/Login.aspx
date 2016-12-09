@@ -79,6 +79,9 @@
                                         <div class="6u 12u(mobilep)">
                                             <asp:TextBox ID="passwordverify" runat="server" placeholder="verify password" TextMode="Password" Visible="False" MaxLength="20"></asp:TextBox>
 										</div>
+                                        <div class="6u 12u(mobilep)">
+                                            <asp:TextBox ID="DateOfBirth" runat="server" placeholder="YYYY,MM,DD" TextMode="Date" Visible="False"></asp:TextBox>
+										</div>
                                         <!--<div class="6u 12u(mobilep)">
                                             <asp:Calendar ID="DOB" runat="server" Visible="False" VisibleDate="2017/01/01" SelectedDate="200/01/01" Caption="DOB"></asp:Calendar>
 										</div>-->

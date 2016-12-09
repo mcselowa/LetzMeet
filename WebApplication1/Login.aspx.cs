@@ -5,11 +5,17 @@ using System.Net.Mail;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using LetzMitWebServer;
 
 namespace WebApplication1
 {
+
+
     public partial class Login : System.Web.UI.Page
     {
+
+        public static  List<string> UserInfo;
+
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -87,18 +93,20 @@ namespace WebApplication1
         {
 
         }
-        public void register()
-        {
-
-        }
         public void register(string name, string surname, string email, string number, string address, string province, string city, string postcode)
         {
 
         }
 
-        protected void Btnlogin_Click(object sender, EventArgs e)
+        protected void Btnlogin_Click(object sender, EventArgs e)//Gets User Data and sets global data
         {
+            MysqlData Usr = new MysqlData();
+            UserInfo = Usr.login(passwordTxt.Text, usernameTxt.Text);
+            if (UserInfo.Count > 1)
+            {
 
+            }
+            else popup.Visible = true; PopMessage.Text = UserInfo[0];
         }
 
         protected void Signup_Click(object sender, EventArgs e)
@@ -115,13 +123,14 @@ namespace WebApplication1
             city.Visible = true;
             postcode.Visible = true;
             passwordverify.Visible = true;
-            DOB.Visible = true;
-           
+            // DOB.Visible = true;
+            DateOfBirth.Visible = true;
         }
 
         protected void SignupComplete_Click(object sender, EventArgs e)
         {
-
+            MysqlData Usr = new MysqlData();
+            Usr.singup(UserName.Text, SURNAME.Text, number.Text, usernameTxt.Text, DateOfBirth.Text, address.Text, city.Text, passwordTxt.Text, province.Text, postcode.Text);
         }
     }
 
