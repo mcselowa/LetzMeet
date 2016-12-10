@@ -67,6 +67,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Login.aspx" />
+    <Content Include="user\userHome.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -99,6 +100,13 @@
       <AutoGen>True</AutoGen>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="user\userHome.aspx.cs">
+      <DependentUpon>userHome.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\userHome.aspx.designer.cs">
+      <DependentUpon>userHome.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

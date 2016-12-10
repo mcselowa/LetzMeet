@@ -15,7 +15,7 @@ namespace WebApplication1
     {
 
         public static  List<string> UserInfo;
-
+        public static MysqlData Usr = new MysqlData();
         protected void Page_Load(object sender, EventArgs e)
         {
 
@@ -33,7 +33,7 @@ namespace WebApplication1
                 else
                         if (Request.QueryString.ToString().Contains("register_name"))
                 {
-                    register();
+                    register(Request.QueryString["UserName"], Request.QueryString["SURNAME"], Request.QueryString["UserNametXT"], Request.QueryString["number"], Request.QueryString["address"], Request.QueryString["province"], Request.QueryString["city"], Request.QueryString["postcode"], Request.QueryString["passwordTxt"], Request.QueryString["DateOfBirth"]);
                 }
             }
             // else { Response.Redirect("index.aspx"); }
@@ -93,18 +93,19 @@ namespace WebApplication1
         {
 
         }
-        public void register(string name, string surname, string email, string number, string address, string province, string city, string postcode)
+        public void register(string name, string surname, string email, string number, string address, string province, string city, string postcode, string password, string DOB)
         {
-
+            
+            Usr.singup(name, surname, number, email, DOB, address, city, province, password, postcode);
         }
 
         protected void Btnlogin_Click(object sender, EventArgs e)//Gets User Data and sets global data
         {
-            MysqlData Usr = new MysqlData();
+             
             UserInfo = Usr.login(passwordTxt.Text, usernameTxt.Text);
             if (UserInfo.Count > 1)
             {
-
+                Response.Redirect("user/userHome.aspx");
             }
             else popup.Visible = true; PopMessage.Text = UserInfo[0];
         }
@@ -123,14 +124,31 @@ namespace WebApplication1
             city.Visible = true;
             postcode.Visible = true;
             passwordverify.Visible = true;
-            // DOB.Visible = true;
             DateOfBirth.Visible = true;
         }
 
         protected void SignupComplete_Click(object sender, EventArgs e)
         {
-            MysqlData Usr = new MysqlData();
-            Usr.singup(UserName.Text, SURNAME.Text, number.Text, usernameTxt.Text, DateOfBirth.Text, address.Text, city.Text, passwordTxt.Text, province.Text, postcode.Text);
+           string rslt = Usr.singup(UserName.Text, SURNAME.Text, number.Text, usernameTxt.Text, DateOfBirth.Text, address.Text, city.Text, passwordTxt.Text, province.Text, postcode.Text);
+            if (rslt.Contains("Signup Successful"))
+                 {
+                passwordTxt.Text = "";
+                Signup.Visible = false;
+                Btnlogin.Visible = true;
+                SignupComplete.Visible = false;
+                UserName.Visible = false;
+                SURNAME.Visible = false;
+                emailverify.Visible = false;
+                number.Visible = false;
+                address.Visible = false;
+                province.Visible = false;
+                city.Visible = false;
+                postcode.Visible = false;
+                passwordverify.Visible = false;
+                DateOfBirth.Visible = false;
+                popup.Visible = true; PopMessage.Text = rslt;
+
+                 }else popup.Visible = true; PopMessage.Text = rslt;
         }
     }
 

@@ -58,31 +58,20 @@ namespace LetzMitWebServer
         try
         {
             conn = new MySqlConnection(connect);
-            conn.Open();
+            //conn.Open();
 
-            string UserDetails = String.Format("INSERT INTO userdetails (userId, Name, password,email,Team) VALUES ('{0}', '{1}', '{2}', '{3}', '{4}','{5}', '{6}', '{7}', '{8}')", userId, name, password, email);
-            string AddPassword = string.Format("INSERT INTO users (userId, password) VALUES ('{0}', '{1}'", userId, password);
-            MySqlCommand select = new MySqlCommand(UserDetails, conn);
-            MySqlDataReader reader;
-            reader = select.ExecuteReader();
-            reader.Close();
-            List<string> data = new List<string>();
-            string command2 = String.Format("SELECT * FROM `users` WHERE `userId` = '{0}'", userId);
-            select = new MySqlCommand(command2, conn);
-            reader = select.ExecuteReader();
+                string adduser = string.Format("INSERT INTO `users`(`name`, `surname`, `email`, `DOB`, `number`, `address`, `city`, `province`, `postcode`, `password`)" +
+                                                             " VALUES('{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}')",name,surname,email,DOB,cellnum,address,city,province,postcode,password);
+            MySqlCommand AddUsr = new MySqlCommand(adduser, conn);
+                AddUsr.Connection.Open();
+                int recordsaffected = AddUsr.ExecuteNonQuery();
+                if (recordsaffected < 1)
+                {
+                    return "Sorry, We Are Experiencing Problems with our servers and cannot process your request at the moment, please contact support on the contact form below.";
+                } else return "Signup Successful, Enter YOur Credentials Below To Sign In";
 
-            while (reader.Read())
-            {
-                data.Add(String.Format("{0}", reader[3]));
+
             }
-            if (password == data[0])
-            {
-                conn.Close(); return "`User Added," + userId + '`';
-            }
-            conn.Close();
-            return "`Data Missmatch`";
-
-        }
         catch (MySqlException ex)
         {
             //conn.Close();
@@ -121,7 +110,41 @@ namespace LetzMitWebServer
             }
             return "error";
         }
-        public string GetEvents() { return "Not Done"; }
+        public string GetEvents()
+        {
+            MySqlConnection conn;
+
+            try
+            {
+                List<string> Data = new List<string>();
+                conn = new MySqlConnection(connect);
+                conn.Open();
+                string command = String.Format("SELECT * FROM `events`");
+                MySqlCommand select = new MySqlCommand(command, conn);
+                MySqlDataReader reader;
+                reader = select.ExecuteReader();
+                int datacount = 1;
+               // List<string> data = new List<string>();
+                while (reader.Read())
+                {
+                    if (datacount % 2 == 1)
+                    {
+                        Data.Add(string.Format(@"<div class=""row""><section class=""6u 12u(narrower)""><div class=""box post""><a href=""EventInfo.aspx?event={0}"" class=""image left""><img src=""images/{1}"" alt=""{2}""></a><div class=""inner""><h3>{2}</h3><p>{3}</p></div></div></section>",reader[0],reader[10],reader[1],reader[2]));
+
+                    } else if (datacount % 2 == 0)
+                    {
+                        Data.Add(string.Format(@"<section class=""6u 12u(narrower)""><div class=""box post""><a href=""EventInfo.aspx?event={0}"" class=""image left""><img src=""images/{1}"" alt=""{2}""></a><div class=""inner""><h3>{2}</h3><p>{3}</p></div></div></section></div>",reader[0],reader[10],reader[1],reader[2]));
+                    }
+                }
+                
+                conn.Close(); string rslt = ""; foreach(string X in Data) { rslt = rslt + X; } return rslt;
+
+            }
+            catch (MySqlException ex)
+            {
+                return ex.Message;
+            }
+        }
         public string BookEvent() { return "Not Done"; }
         public string GetAttending() { return "Not Done"; }
         public string CancellEvent() { return "Not Done"; }
