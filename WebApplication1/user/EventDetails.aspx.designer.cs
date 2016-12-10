@@ -10,7 +10,7 @@
 namespace WebApplication1.user {
     
     
-    public partial class userHome {
+    public partial class EventDetails {
         
         /// <summary>
         /// Events control.

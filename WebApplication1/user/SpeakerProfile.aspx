@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="userHome.aspx.cs" Inherits="WebApplication1.user.userHome" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="SpeakerProfile.aspx.cs" Inherits="WebApplication1.user.SpeakerProfile" %>
 
 <!DOCTYPE html>
 

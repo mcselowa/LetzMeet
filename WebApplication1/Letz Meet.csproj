@@ -67,7 +67,10 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Login.aspx" />
+    <Content Include="user\EventDetails.aspx" />
+    <Content Include="user\SpeakerProfile.aspx" />
     <Content Include="user\userHome.aspx" />
+    <Content Include="user\UserProfile.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -101,12 +104,33 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
+    <Compile Include="user\EventDetails.aspx.cs">
+      <DependentUpon>EventDetails.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\EventDetails.aspx.designer.cs">
+      <DependentUpon>EventDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\SpeakerProfile.aspx.cs">
+      <DependentUpon>SpeakerProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\SpeakerProfile.aspx.designer.cs">
+      <DependentUpon>SpeakerProfile.aspx</DependentUpon>
+    </Compile>
     <Compile Include="user\userHome.aspx.cs">
       <DependentUpon>userHome.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="user\userHome.aspx.designer.cs">
       <DependentUpon>userHome.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="user\UserProfile.aspx.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="user\UserProfile.aspx.designer.cs">
+      <DependentUpon>UserProfile.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
