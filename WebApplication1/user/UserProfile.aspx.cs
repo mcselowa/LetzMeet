@@ -12,6 +12,17 @@ namespace WebApplication1.user
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            List<string> UserDets = Login.UserInfo;
+            txtName.Text = UserDets[1];
+            txtSurname.Text = UserDets[2];
+            txtemail.Text = UserDets[3];
+            txtDOB.Text = UserDets[4];
+            txtCellNum.Text = UserDets[5];
+            txtAddress.Text = UserDets[7];
+            txtCity.Text = UserDets[8];
+            txtProvince.Text = UserDets[9];
+            txtPostCode.Text = UserDets[10];
+
         }
     }
 }

@@ -6,7 +6,7 @@
 
 
 <html><head>
-		<title>Letz Meet</title>
+		<title>Letz Mit</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -92,49 +92,15 @@
 				</section>
 
 			<!-- Posts -->
-				<section class="wrapper style1">
-					<div class="container">
-						<div class="row">
-							<section class="6u 12u(narrower)">
-								<div class="box post">
-									<a href="#" class="image left"><img src="images/pic01.jpg" alt=""></a>
-									<div class="inner">
-										<h3>The First Event</h3>
-										<p>Event description</p>
-									</div>
-								</div>
-							</section>
-							<section class="6u 12u(narrower)">
-								<div class="box post">
-									<a href="#" class="image left"><img src="images/pic02.jpg" alt=""></a>
-									<div class="inner">
-										<h3>The Second Event</h3>
-										<p>Event description</p>
-									</div>
-								</div>
-							</section>
-						</div>
-						<div class="row">
-							<section class="6u 12u(narrower)">
-								<div class="box post">
-									<a href="#" class="image left"><img src="images/pic03.jpg" alt=""></a>
-									<div class="inner">
-										<h3>The Third Event</h3>
-										<p>Event description</p>
-									</div>
-								</div>
-							</section>
-							<section class="6u 12u(narrower)">
-								<div class="box post">
-									<a href="#" class="image left"><img src="images/pic04.jpg" alt=""></a>
-									<div class="inner">
-										<h3>The Fourth Event</h3>
-										<p>Event description</p></div>
-								</div>
-							</section>
-						</div>
-					</div>
-				</section>
+				<article>
+											<header>
+												<h2>Letz Meet</h2>
+												<p>Your Personal Guide and assistant To All The Right Meet-ups</p>
+											</header>
+
+                                            <asp:Literal ID="HomeEvents" runat="server"></asp:Literal>
+
+										</article>
 
 			<!-- CTA -->
 				<section id="cta" class="wrapper style3">
@@ -150,14 +116,6 @@
 				<div id="footer">
 					<div class="container">
 						<div class="row">
-							<section class="3u 6u(narrower) 12u$(mobilep)">
-								<h3>Space for ads</h3>
-								
-							</section>
-							<section class="3u 6u$(narrower) 12u$(mobilep)">
-								<h3>More Space for ads</h3>
-								
-							</section>
 							<section class="6u 12u(narrower)">
 								<h3>Get In Touch</h3>
 									<div class="row 50%">

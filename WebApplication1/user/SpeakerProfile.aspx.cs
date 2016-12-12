@@ -11,7 +11,7 @@ namespace WebApplication1.user
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Events.Text = Login.Usr.GetSpeakerData("ID");
         }
     }
 }

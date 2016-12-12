@@ -12,6 +12,7 @@ namespace WebApplication1.user
         protected void Page_Load(object sender, EventArgs e)
         {
 
+            EventDetailz.Text = Login.Usr.EventDetails(Request.QueryString["event"]);
         }
     }
 }

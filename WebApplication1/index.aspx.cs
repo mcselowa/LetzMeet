@@ -18,7 +18,9 @@ namespace WebApplication1
                 string Data = Request.QueryString["TextBox1"] + Request.QueryString["TextBox2"] + Request.QueryString["TextBox3"];
                 TextBox3.Text = "Hello? i think im workin";
             }
-           // else { Response.Redirect("index.aspx"); }
+
+            HomeEvents.Text = Login.Usr.GetEvents();
+            // else { Response.Redirect("index.aspx"); }
         }
 
          protected void Button1_Click(Object sender, System.EventArgs e)

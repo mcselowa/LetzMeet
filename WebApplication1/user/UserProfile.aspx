@@ -4,7 +4,7 @@
 
 <html>
 	<head>
-		<title>Left Sidebar - Arcana by HTML5 UP</title>
+		<title>Letz Mit</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<!--[if lte IE 8]><script src="assets/js/ie/html5shiv.js"></script><![endif]-->
@@ -13,6 +13,7 @@
 		<!--[if lte IE 9]><link rel="stylesheet" href="assets/css/ie9.css" /><![endif]-->
 	</head>
 	<body>
+		<form id="form1" runat="server">
 		<div id="page-wrapper">
 
 			<!-- Header -->
@@ -40,27 +41,20 @@
 									<!-- Sidebar -->
 
 										<section>
-											<h3>Just a Subheading</h3>
-											<p>Phasellus quam turpis, feugiat sit amet ornare in, hendrerit in lectus.
-											Praesent semper mod quis eget mi. Etiam eu ante risus. Aliquam erat volutpat.
-											Aliquam luctus et mattis lectus sit amet pulvinar. Nam turpis et nisi etiam.</p>
-											<footer>
-												<a href="#" class="button">Continue Reading</a>
-											</footer>
+											<h3>Letz Mit</h3>
+											<p>My Panel</p>
 										</section>
 
 										<section>
-											<h3>Another Subheading</h3>
+											<!--<h3>Another Subheading</h3>-->
 											<ul class="links">
-												<li><a href="#">Amet turpis, feugiat et sit amet</a></li>
-												<li><a href="#">Ornare in hendrerit in lectus</a></li>
-												<li><a href="#">Semper mod quis eget mi dolore</a></li>
-												<li><a href="#">Consequat etiam lorem phasellus</a></li>
-												<li><a href="#">Amet turpis, feugiat et sit amet</a></li>
-												<li><a href="#">Semper mod quisturpis nisi</a></li>
+												<li><a href="userHOme.aspx">All Events</a></li>
+												<li><a href="userHome.aspx?type=user">My Events</a></li>
+												<li><a href="userHome.aspx?type=attending">Events I'm Attending</a></li>
+												<li><a href="UserProfile.aspx">My Profile</a></li>
 											</ul>
 											<footer>
-												<a href="#" class="button">More Random Links</a>
+												<a href="Logout.aspx" class="button">Log out</a>
 											</footer>
 										</section>
 
@@ -73,12 +67,43 @@
 
 										<article>
 											<header>
-												<h2>Letz Meet</h2>
-												<p>Your Personal Guide and assistant To All The Right Meet-ups</p>
+												<h2>User Profile</h2>
+												<p>
+                                                    <asp:Literal ID="UserName" runat="server"></asp:Literal>
+
+												</p>
 											</header>
 
-                                            <asp:Literal ID="Events" runat="server"></asp:Literal>
-
+											<span class="image featured">
+                                            <asp:Image ID="UserImage" runat="server" />
+                                            </span>
+											&nbsp;
+										    Name<asp:TextBox ID="txtName" runat="server" Enabled="False"></asp:TextBox>
+                                            <br />
+&nbsp;
+                                            Surname<asp:TextBox ID="txtSurname" runat="server" Enabled="False"></asp:TextBox>
+                                            <br />
+&nbsp;
+                                            e-mail Address<asp:TextBox ID="txtemail" runat="server" Enabled="False" TextMode="Email"></asp:TextBox>
+                                            <br />
+&nbsp;
+                                            DOB<asp:TextBox ID="txtDOB" runat="server" Enabled="False" TextMode="Date"></asp:TextBox>
+                                            <br />
+&nbsp;
+                                            Cell Number<asp:TextBox ID="txtCellNum" runat="server" Enabled="False"></asp:TextBox>
+                                            <br />
+&nbsp;
+                                            Address<asp:TextBox ID="txtAddress" runat="server" Enabled="False"></asp:TextBox>
+                                            <br />
+&nbsp;
+                                            City<asp:TextBox ID="txtCity" runat="server" Enabled="False"></asp:TextBox>
+                                            <br />
+&nbsp;
+                                            Province<asp:TextBox ID="txtProvince" runat="server" Enabled="False"></asp:TextBox>
+                                            <br />
+&nbsp;
+                                            Postal Code<asp:TextBox ID="txtPostCode" runat="server" Enabled="False"></asp:TextBox>
+                                           
 										</article>
 
 								</div>
@@ -89,59 +114,6 @@
 
 			<!-- Footer -->
 				<div id="footer">
-					<div class="container">
-						<div class="row">
-							<section class="3u 6u(narrower) 12u$(mobilep)">
-								<h3>Links to Stuff</h3>
-								<ul class="links">
-									<li><a href="#">Mattis et quis rutrum</a></li>
-									<li><a href="#">Suspendisse amet varius</a></li>
-									<li><a href="#">Sed et dapibus quis</a></li>
-									<li><a href="#">Rutrum accumsan dolor</a></li>
-									<li><a href="#">Mattis rutrum accumsan</a></li>
-									<li><a href="#">Suspendisse varius nibh</a></li>
-									<li><a href="#">Sed et dapibus mattis</a></li>
-								</ul>
-							</section>
-							<section class="3u 6u$(narrower) 12u$(mobilep)">
-								<h3>More Links to Stuff</h3>
-								<ul class="links">
-									<li><a href="#">Duis neque nisi dapibus</a></li>
-									<li><a href="#">Sed et dapibus quis</a></li>
-									<li><a href="#">Rutrum accumsan sed</a></li>
-									<li><a href="#">Mattis et sed accumsan</a></li>
-									<li><a href="#">Duis neque nisi sed</a></li>
-									<li><a href="#">Sed et dapibus quis</a></li>
-									<li><a href="#">Rutrum amet varius</a></li>
-								</ul>
-							</section>
-							<section class="6u 12u(narrower)">
-								<h3>Get In Touch</h3>
-								<form>
-									<div class="row 50%">
-										<div class="6u 12u(mobilep)">
-											<input type="text" name="name" id="name" placeholder="Name" />
-										</div>
-										<div class="6u 12u(mobilep)">
-											<input type="email" name="email" id="email" placeholder="Email" />
-										</div>
-									</div>
-									<div class="row 50%">
-										<div class="12u">
-											<textarea name="message" id="message" placeholder="Message" rows="5"></textarea>
-										</div>
-									</div>
-									<div class="row 50%">
-										<div class="12u">
-											<ul class="actions">
-												<li><input type="submit" class="button alt" value="Send Message" /></li>
-											</ul>
-										</div>
-									</div>
-								</form>
-							</section>
-						</div>
-					</div>
 
 					<!-- Icons -->
 						<ul class="icons">
@@ -155,7 +127,7 @@
 					<!-- Copyright -->
 						<div class="copyright">
 							<ul class="menu">
-								<li>&copy; Untitled. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
+								<li>&copy; Letz Mit. All rights reserved</li><li>Design: <a href="http://html5up.net">HTML5 UP</a></li>
 							</ul>
 						</div>
 
@@ -170,6 +142,8 @@
 			<script src="assets/js/util.js"></script>
 			<!--[if lte IE 8]><script src="assets/js/ie/respond.min.js"></script><![endif]-->
 			<script src="assets/js/main.js"></script>
+
+	    </form>
 
 	</body>
 </html>

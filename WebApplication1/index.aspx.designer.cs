@@ -40,6 +40,15 @@ namespace WebApplication1 {
         protected global::System.Web.UI.WebControls.TextBox PopMessage;
         
         /// <summary>
+        /// HomeEvents control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Literal HomeEvents;
+        
+        /// <summary>
         /// TextBox1 control.
         /// </summary>
         /// <remarks>

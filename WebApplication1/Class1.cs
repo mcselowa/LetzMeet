@@ -38,7 +38,7 @@ namespace LetzMitWebServer
             if (password == data[11])
             {
                     Data = data;
-                conn.Close(); return Data; ;
+                conn.Close(); return Data;
                 
             }
             conn.Close(); Data.Clear(); Data.Add("Incorrect Password"); return Data;
@@ -49,7 +49,7 @@ namespace LetzMitWebServer
             return new List<string>() { ex.Message};
         }
     }
-    public string singup(string name, string surname, string cellnum, string email, string DOB, string address, string city, string password, string province, string postcode)
+        public string singup(string name, string surname, string cellnum, string email, string DOB, string address, string city, string password, string province, string postcode)
     {
         // INSERT INTO `ddt_data`.`users` (`userId`, `Name`, `password`) VALUES ('Me003', 'Mell', '123456789')
         MySqlConnection conn;
@@ -81,12 +81,12 @@ namespace LetzMitWebServer
     }
         #endregion
         #region User Actions
-        public string GetProfileData(int State, string userId)
+        public List<string> GetProfileData(string userId)
         {
             MySqlConnection conn;
-            if (State == 1) {
                 try
                 {
+                    int datacount = 0;
                     conn = new MySqlConnection(connect);
                     conn.Open();
                     string command = String.Format("SELECT * FROM `users` WHERE `userId` = '{0}'", userId);
@@ -96,18 +96,51 @@ namespace LetzMitWebServer
                     List<string> data = new List<string>(1);
                     while (reader.Read())
                     {
-                        //Read Data into something
-                        return userId; //rep[lacewith html or xml
+                    foreach (string X in reader)
+                      {
+                        data.Add(string.Format("{0}", reader[datacount]));
+                        datacount++;
+                      }
+
                     }
+                conn.Close(); return data;
 
 
-                }
+            } 
                 
+            catch (MySqlException ex)
+            {
+                return new List<string> { '`' + ex.Message + '`' };
+            }
+
+            //return new List<string> { "error" };
+        }//Done
+        public string GetSpeakerData(string userId)
+        {
+            MySqlConnection conn;
+            try
+            {
+                conn = new MySqlConnection(connect);
+                conn.Open();
+                string command = String.Format("SELECT * FROM `users` WHERE `userId` = '{0}'", userId);
+                MySqlCommand select = new MySqlCommand(command, conn);
+                MySqlDataReader reader;
+                reader = select.ExecuteReader();
+                List<string> data = new List<string>(1);
+                while (reader.Read())
+                {
+                    //Read Data into something
+                    return userId; //rep[lacewith html or xml
+                }
+
+
+            }
+
             catch (MySqlException ex)
             {
                 return '`' + ex.Message + '`';
             }
-            }
+
             return "error";
         }
         public string GetEvents()
@@ -127,14 +160,8 @@ namespace LetzMitWebServer
                // List<string> data = new List<string>();
                 while (reader.Read())
                 {
-                    if (datacount % 2 == 1)
-                    {
-                        Data.Add(string.Format(@"<div class=""row""><section class=""6u 12u(narrower)""><div class=""box post""><a href=""EventInfo.aspx?event={0}"" class=""image left""><img src=""images/{1}"" alt=""{2}""></a><div class=""inner""><h3>{2}</h3><p>{3}</p></div></div></section>",reader[0],reader[10],reader[1],reader[2]));
-
-                    } else if (datacount % 2 == 0)
-                    {
-                        Data.Add(string.Format(@"<section class=""6u 12u(narrower)""><div class=""box post""><a href=""EventInfo.aspx?event={0}"" class=""image left""><img src=""images/{1}"" alt=""{2}""></a><div class=""inner""><h3>{2}</h3><p>{3}</p></div></div></section></div>",reader[0],reader[10],reader[1],reader[2]));
-                    }
+                   
+                        Data.Add(string.Format(@"<article><header><h2><a  href=""EventDetails.aspx?event={0}"" >{2}</a></h2></header><span class=""image featured""><a href=""EventDetails.aspx?event={0}""> <img src=""images/{1}"" alt=""{2}""></a></span><p>Short Description<a href=""EventDetails.aspx?event={0}""> Read More</a></p></article>", reader[0],reader[10],reader[1]));
                 }
                 
                 conn.Close(); string rslt = ""; foreach(string X in Data) { rslt = rslt + X; } return rslt;
@@ -144,7 +171,37 @@ namespace LetzMitWebServer
             {
                 return ex.Message;
             }
-        }
+        }//Done
+        public string EventDetails(string ID)
+        {
+            MySqlConnection conn;
+
+            try
+            {
+                List<string> Data = new List<string>();
+                conn = new MySqlConnection(connect);
+                conn.Open();
+                string command = String.Format("SELECT * FROM `events` WHERE id='{0}'",ID);
+                MySqlCommand select = new MySqlCommand(command, conn);
+                MySqlDataReader reader;
+                reader = select.ExecuteReader();
+                //int datacount = 1;
+                // List<string> data = new List<string>();
+                while (reader.Read())
+                {
+
+                    Data.Add(string.Format(@"<article><header><h2>{2}</h2></header><span class=""image featured""><img src=""images/{1}"" alt=""{2}""></span><p>{0}</p><p>Date: {3}</p><p>Venue: {4}</p><p>Time: {5}</p><p>RSVP Deadline: {6}</p></article>", reader[2], reader[10], reader[1], reader[4], reader[9], reader[5], reader[6]));
+                }
+
+                conn.Close(); string rslt = ""; foreach (string X in Data) { rslt = rslt + X; }
+                return rslt;
+
+            }
+            catch (MySqlException ex)
+            {
+                return ex.Message;
+            }
+        }//Done, Needs Speaker Links
         public string BookEvent() { return "Not Done"; }
         public string GetAttending() { return "Not Done"; }
         public string CancellEvent() { return "Not Done"; }
