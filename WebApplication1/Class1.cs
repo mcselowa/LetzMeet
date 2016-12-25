@@ -122,15 +122,15 @@ namespace LetzMitWebServer
             {
                 conn = new MySqlConnection(connect);
                 conn.Open();
-                string command = String.Format("SELECT * FROM `users` WHERE `userId` = '{0}'", userId);
+                string command = String.Format("SELECT * FROM `speakers` WHERE `id` = '{0}'", userId);
                 MySqlCommand select = new MySqlCommand(command, conn);
                 MySqlDataReader reader;
                 reader = select.ExecuteReader();
                 List<string> data = new List<string>(1);
                 while (reader.Read())
                 {
-                    //Read Data into something
-                    return userId; //rep[lacewith html or xml
+                    return string.Format(@"<div class=""8u  12u(narrower) important(narrower)""><div id=""content""><!-- Content --><article><header><h2>{0}</h2></header><span class=""image featured""><img src=""images/{2}"" alt="""" /></span><p>{1}</p></article></div></div>",reader[1],reader[2],reader[3]);
+                   //userId; //rep[lacewith html or xml
                 }
 
 
@@ -161,7 +161,7 @@ namespace LetzMitWebServer
                 while (reader.Read())
                 {
                    
-                        Data.Add(string.Format(@"<article><header><h2><a  href=""EventDetails.aspx?event={0}"" >{2}</a></h2></header><span class=""image featured""><a href=""EventDetails.aspx?event={0}""> <img src=""images/{1}"" alt=""{2}""></a></span><p>Short Description<a href=""EventDetails.aspx?event={0}""> Read More</a></p></article>", reader[0],reader[10],reader[1]));
+                        Data.Add(string.Format(@"<article><header><h2><a  href=""EventDetails.aspx?event={0}"" >{2}</a></h2></header><span class=""image featured""><a href=""EventDetails.aspx?event={0}""> <img align=""middle"" src=""images/{1}"" alt=""{2}""></a></span><p>Short Description<a href=""EventDetails.aspx?event={0}""> Read More</a></p></article>", reader[0],reader[10],reader[1]));
                 }
                 
                 conn.Close(); string rslt = ""; foreach(string X in Data) { rslt = rslt + X; } return rslt;
@@ -178,7 +178,7 @@ namespace LetzMitWebServer
 
             try
             {
-                List<string> Data = new List<string>();
+                string Data = "";
                 conn = new MySqlConnection(connect);
                 conn.Open();
                 string command = String.Format("SELECT * FROM `events` WHERE id='{0}'",ID);
@@ -190,10 +190,27 @@ namespace LetzMitWebServer
                 while (reader.Read())
                 {
 
-                    Data.Add(string.Format(@"<article><header><h2>{2}</h2></header><span class=""image featured""><img src=""images/{1}"" alt=""{2}""></span><p>{0}</p><p>Date: {3}</p><p>Venue: {4}</p><p>Time: {5}</p><p>RSVP Deadline: {6}</p></article>", reader[2], reader[10], reader[1], reader[4], reader[9], reader[5], reader[6]));
-                }
+                    Data = string.Format(@"<article><header><h2>{2}</h2></header><span class=""image featured""><img src=""images/{1}"" alt=""{2}""></span><p>{0}</p><p>Date: {3}</p><p>Venue: {4}</p><p>Time: {5}</p><p>RSVP Deadline: {6}</p></br><h3>Speakers:</h3>", reader[2], reader[10], reader[1], reader[4], reader[9], reader[5], reader[6]);
+                }  conn.Close();
 
-                conn.Close(); string rslt = ""; foreach (string X in Data) { rslt = rslt + X; }
+                conn.Open();
+                command = String.Format("SELECT eventspeakers.speakerid, speakers.name FROM eventspeakers INNER JOIN speakers ON eventspeakers.speakerid=speakers.id WHERE eventspeakers.eventid='{0}'", ID);
+                select = new MySqlCommand(command, conn);
+                List<string> lastBit = new List<string>();
+                reader = select.ExecuteReader();
+                //int datacount = 1;
+                // List<string> data = new List<string>();
+                while (reader.Read())
+                {
+                    lastBit.Add(string.Format(@"<p><a href=""SpeakerProfile.aspx?id={0}"">{1}</a></p>", reader[0], reader[1]));
+
+                    //lastBit = string.Format(@"<p><a href=""SpeakerProfile.aspx?id={7}""></a></p><p><a href=""SpeakerProfile.aspx?id={8}""></a></p><p><a href=""SpeakerProfile.aspx?id={9}""></a></p></article>", reader[2], reader[10], reader[1], reader[4], reader[9], reader[5], reader[6]);
+                }
+                string midsect = "";
+                foreach( string x in lastBit) { midsect = midsect + x; }
+                conn.Close();
+
+                string rslt = Data + midsect + @"</article>";
                 return rslt;
 
             }

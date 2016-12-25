@@ -22,6 +22,7 @@ namespace WebApplication1.user
             txtCity.Text = UserDets[8];
             txtProvince.Text = UserDets[9];
             txtPostCode.Text = UserDets[10];
+            UserImage.ImageUrl = "/images/" + UserDets[12];
 
         }
     }

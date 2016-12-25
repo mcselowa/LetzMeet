@@ -10,7 +10,10 @@
 /* Reset */
 
 	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
-		margin: 0;
+		margin-top: auto;
+    	margin-right: auto;
+    	margin-bottom: auto;
+   		margin-left: auto;
 		padding: 0;
 		border: 0;
 		font-size: 100%;
@@ -18,7 +21,19 @@
 		vertical-align: baseline;
 	}
 
-	article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+	aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+		margin-top: auto;
+    	margin-right: auto;
+    	margin-bottom: auto;
+   		margin-left: auto;
+		display: block;
+	}
+	article
+	{
+		margin-top: auto;
+    	margin-right: auto;
+    	margin-bottom: auto;
+   		margin-left: 30px;
 		display: block;
 	}
 
@@ -51,6 +66,10 @@
 /* Box Model */
 
 	*, *:before, *:after {
+		margin-top: auto;
+    	margin-right: auto;
+    	margin-bottom: auto;
+   		margin-left: 7.54px;
 		-moz-box-sizing: border-box;
 		-webkit-box-sizing: border-box;
 		box-sizing: border-box;
@@ -2323,6 +2342,14 @@
 		text-align: center;
 		padding: 3em 0 0 0;
 		background-color: #fff;
+		background-position: top left,					top left,					top left;
+		background-size: 100% 6em,					100% 6em,					auto;
+		background-repeat: no-repeat,					no-repeat,					repeat;
+	}
+	#header2 {
+		text-align: center;
+		padding: 3em 0 0 0;
+		background-color: #e91515;
 		background-position: top left,					top left,					top left;
 		background-size: 100% 6em,					100% 6em,					auto;
 		background-repeat: no-repeat,					no-repeat,					repeat;

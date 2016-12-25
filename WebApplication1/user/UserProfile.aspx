@@ -87,7 +87,7 @@
                                             e-mail Address<asp:TextBox ID="txtemail" runat="server" Enabled="False" TextMode="Email"></asp:TextBox>
                                             <br />
 &nbsp;
-                                            DOB<asp:TextBox ID="txtDOB" runat="server" Enabled="False" TextMode="Date"></asp:TextBox>
+                                            DOB<asp:TextBox ID="txtDOB" runat="server"  TextMode="Date" ViewStateMode="Enabled"></asp:TextBox>
                                             <br />
 &nbsp;
                                             Cell Number<asp:TextBox ID="txtCellNum" runat="server" Enabled="False"></asp:TextBox>

@@ -70,7 +70,7 @@
 												<p>Your Personal Guide and assistant To All The Right Meet-ups</p>
 											</header>
 
-                                            <asp:Literal ID="Events" runat="server"></asp:Literal>
+                                            <asp:Literal ID="speakerprofiler" runat="server"></asp:Literal>
 
 										</article>
 
